@@ -13,6 +13,7 @@ namespace KendoDemo.API
         private static bool _initialized = false;
         private static object _lock = new object();
         private static List<Kendo> kendos;
+        private static List<KendoMap> kendosMap;
 
         public static void Seed(KendoContext context)
         {
@@ -36,10 +37,26 @@ namespace KendoDemo.API
         private static void AddKendos(KendoContext context)
         {
             var data = System.IO.File.ReadAllText("data.json");
-            kendos = JsonConvert.DeserializeObject<List<Kendo>>(data);
-            foreach (var kendo in kendos)
+            kendosMap = JsonConvert.DeserializeObject<List<KendoMap>>(data);
+            int i = 0;
+            foreach (var kendo in kendosMap)
             {
-                context.Kendos.Add(kendo);
+                Kendo k = new Kendo();
+                k.Id = ++i;
+                k.IsActive = kendo.IsActive;
+                k.Phone = kendo.Phone;
+                k.Picture = kendo.Picture;
+                k.Registered = kendo.Registered;
+                k.FullName = kendo.FullName;
+                k.FavoriteFurit = kendo.FavoriteFurit;
+                k.EyeColor = kendo.EyeColor;
+                k.Email = kendo.Email;
+                k.Company = kendo.Company;
+                k.Balance = kendo.Balance;
+                k.Age = kendo.Age;
+                k.Address = kendo.Address;
+                k.About = kendo.About;
+                context.Kendos.Add(k);
             }
             if (!context.Kendos.Any())
             {

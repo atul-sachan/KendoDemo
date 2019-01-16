@@ -27,7 +27,7 @@ namespace KendoDemo.API.Controllers
 
             var result = kendos.AsEnumerable()
                         .Select((obj, index) => new { obj.Id, Index = index }).ToList()
-                        .FirstOrDefault(x => x.Id == Id[0]);
+                        .FirstOrDefault(x => x.Id == Convert.ToInt32(Id[0]));
 
             int SelectedData = (result != null) ? result.Index + 1 : 0;
 

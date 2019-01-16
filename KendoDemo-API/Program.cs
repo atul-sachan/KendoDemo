@@ -17,13 +17,13 @@ namespace KendoDemo.API
         {
             var host = BuildWebHost(args);
 
-            //using (var scope = host.Services.CreateScope())
-            //{
-            //    var services = scope.ServiceProvider;
-            //    var context = services.GetRequiredService<KendoContext>();
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<KendoContext>();
 
-            //    KendoInitializer.Initialize(context);
-            //}
+                KendoInitializer.Initialize(context);
+            }
 
             host.Run();
         }
