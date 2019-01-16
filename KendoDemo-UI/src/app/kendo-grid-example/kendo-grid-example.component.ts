@@ -14,7 +14,7 @@ import { SortDescriptor } from '@progress/kendo-data-query';
 export class KendoGridExampleComponent implements OnInit {
   public loading: boolean;
   @ViewChild('grid') private grid: GridComponent;
-  public mySelection: string[] = [];
+  public mySelection: number[] = [];
 
   public state: any = {
     skip: 0,
@@ -68,7 +68,7 @@ export class KendoGridExampleComponent implements OnInit {
   }
   public met() {
     this.mySelection = [];
-    this.mySelection.push('03baa64c-359f-471c-84a8-aee06d32a4f0');
+    this.mySelection.push(151);
     setTimeout(() => {
       document.querySelector('.k-state-selected').scrollIntoView();
     }, 3000);
@@ -77,7 +77,7 @@ export class KendoGridExampleComponent implements OnInit {
 
   public manualselect() {
     this.mySelection = [];
-    this.mySelection.push('3e46cd1f-8750-4dd7-8d75-758e49829a09');
+    this.mySelection.push(351);
     this.state.skip = 300;
     this.stateChange.next(this.state);
     setTimeout(() => {
@@ -98,7 +98,8 @@ export class KendoGridExampleComponent implements OnInit {
       const persistancePage = Math.floor(parseInt(localStorage.getItem('index')) / 100);
       setTimeout(() => {
         this.mySelection = [];
-        this.mySelection.push(localStorage.getItem('id').toString());
+        // tslint:disable-next-line:radix
+        this.mySelection.push(parseInt(localStorage.getItem('id')));
         if (currentPage === persistancePage) {
 
           console.log(document.querySelector('.k-state-selected'));
