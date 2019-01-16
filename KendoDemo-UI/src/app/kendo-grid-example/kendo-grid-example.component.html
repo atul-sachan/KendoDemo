@@ -1,3 +1,7 @@
+<button (click)="select()">Select row</button>
+<button (click)="met()">Select row</button>
+<button (click)="manualselect()">Select row</button>
+{{mySelection[0]}}
 <kendo-grid #grid
   [data]="query | async"
   [loading]="loading"
@@ -23,10 +27,10 @@
   <kendo-grid-column field="EyeColor" [width]="80" title="EyeColor"></kendo-grid-column>
   <kendo-grid-column field="FullName" [width]="80" title="FullName"></kendo-grid-column>
   <kendo-grid-column field="Company" [width]="80" title="Company"></kendo-grid-column>
-  <kendo-grid-column field="Email" [width]="80" title="Email"></kendo-grid-column>
+  <!-- <kendo-grid-column field="Email" [width]="80" title="Email"></kendo-grid-column>
   <kendo-grid-column field="Phone" [width]="80" title="Phone"></kendo-grid-column>
   <kendo-grid-column field="Address" [width]="80" title="Address"></kendo-grid-column>
   <kendo-grid-column field="Greeting" title="Greeting" [width]="200"></kendo-grid-column>
   <kendo-grid-column field="Registered" title="Registered" [width]="100"></kendo-grid-column>
-  <kendo-grid-column field="About" title="About" [width]="200"></kendo-grid-column>
+  <kendo-grid-column field="About" title="About" [width]="200"></kendo-grid-column> -->
 </kendo-grid>
